@@ -1,0 +1,13 @@
+CLM_SERVICE_NAME = "CLM"
+CLM_PORT = 8081
+
+HADOOP_API_SERVICE_NAME = "Hadoop-API"
+HADOOP_API_PORT = 8082
+
+HADOOP_SERVICE_NAME = "Hadoop"
+HADOOP_PORT = 8083
+HADDOP_500_ERROR = "Hadoop Internal Server Error"
+
+ES_SERVICE_NAME = "Elasticsearch"
+ES_PORT = 8084
+ES_500_ERROR = "ES Internal Server Error"
