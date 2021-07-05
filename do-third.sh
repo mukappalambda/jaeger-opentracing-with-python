@@ -1,3 +1,6 @@
 #!/bin/bash
 
-docker exec fake_clm sh -c './runCronjob'
+for i in `seq 1 100`; do
+  ./do-second.sh
+  sleep 1
+done

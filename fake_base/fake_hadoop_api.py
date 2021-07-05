@@ -27,7 +27,7 @@ def push():
 
     with tracer.start_active_span(operation_name="hadoop-api-push", child_of=span_ctx, tags=span_tags):
         # es part
-        url = f"http://es:{ES_PORT}/index"
+        url = f"http://fake_es:{ES_PORT}/index"
         
         span = tracer.active_span
         span.set_tag(tags.HTTP_METHOD, "GET")
@@ -43,7 +43,7 @@ def push():
 
 
         # hadoop part
-        url = f"http://hadoop:{HADOOP_PORT}/push"
+        url = f"http://fake_hadoop:{HADOOP_PORT}/push"
         
         span.set_tag(tags.HTTP_METHOD, "GET")
         span.set_tag(tags.HTTP_URL, url)
