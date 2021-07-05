@@ -27,7 +27,7 @@ def push():
 
     with tracer.start_active_span(operation_name="hadoop-api-push", child_of=span_ctx, tags=span_tags):
         # es part
-        url = f"http://localhost:{ES_PORT}/index"
+        url = f"http://es:{ES_PORT}/index"
         
         span = tracer.active_span
         span.set_tag(tags.HTTP_METHOD, "GET")
@@ -43,7 +43,7 @@ def push():
 
 
         # hadoop part
-        url = f"http://localhost:{HADOOP_PORT}/push"
+        url = f"http://hadoop:{HADOOP_PORT}/push"
         
         span.set_tag(tags.HTTP_METHOD, "GET")
         span.set_tag(tags.HTTP_URL, url)
@@ -57,4 +57,4 @@ def push():
 
 
 if __name__ == "__main__":
-    app.run(port=HADOOP_API_PORT)
+    app.run(host="0.0.0.0", port=HADOOP_API_PORT)

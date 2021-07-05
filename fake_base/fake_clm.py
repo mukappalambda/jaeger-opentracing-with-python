@@ -15,7 +15,7 @@ def ping():
     span_tags = {tags.SPAN_KIND: tags.SPAN_KIND_RPC_SERVER}
 
     with tracer.start_active_span(operation_name="hadoop-api-ping", child_of=span_ctx, tags=span_tags) as scope:
-        url = f"http://localhost:{HADOOP_API_PORT}/ping"
+        url = f"http://hadoop-api:{HADOOP_API_PORT}/ping"
 
         span = tracer.active_span
         span.set_tag(tags.HTTP_METHOD, "GET")
@@ -35,7 +35,7 @@ def backup():
 
     with tracer.start_active_span(operation_name="clm-backup", child_of=span_ctx, tags=span_tags) as scope:
 
-        url = f"http://localhost:{HADOOP_API_PORT}/push"
+        url = f"http://hadoop-api:{HADOOP_API_PORT}/push"
         
         span = tracer.active_span
         span.set_tag(tags.HTTP_METHOD, "GET")
@@ -48,4 +48,4 @@ def backup():
 
 
 if __name__ == "__main__":
-    app.run(port=CLM_PORT)
+    app.run(host="0.0.0.0", port=CLM_PORT)
